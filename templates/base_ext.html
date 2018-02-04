@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block body %}
+<p>This is the extended version!!!</p>
+{% for i in ['bob','alex','jess'] %}
+		<li>{{i}}</li>
+{% endfor %}		
+{% endblock %}

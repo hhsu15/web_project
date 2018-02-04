@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>My Web App</h1>
+    <p>This example shows how to:</p>
+       <div class="container">
+         <ul display="inline-block" text-align='left'>
+            <li> Create a user form</li>
+            <li> User input elements for different types (email, password, checkbox, submit button)</li>
+            <li> Access DOM elements</li>
+            <li> Usage of anonymous function</li>
+            <li> Create a Table format</li>
+            <li> Insert image</li>
+        </ul>
+      </div>
+
+</div>
+
+<div class="container">
+    <h2>User Form</h2>
+    <form action="/register" id = 'registration' method='get' class="form-group"> 
+    	<p><input autocomplete='off' autofocus name='email' placeholder='Email' type = 'email'></p>
+        <p><input name='name' placeholder='Name'/></p>
+        <p><input name='password' placeholder='Password' type = 'password'/></p>
+        <p><input name='checkbox' type = 'checkbox'/> I agree</p>
+        <p><input type='submit'  value = 'Register'/></p>
+    </form>    
+</div>
+
+
+<div class="container">
+    <h2>Table</h2>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="container">
+  <h2>Holloween!</h2>            
+  <img src="{{url_for('static',filename='IMG_3757.jpg')}}" class="img-rounded" alt="Holloween" width="304" height="236"> 
+</div>
+
+<script src="{{url_for('static',filename='js_example.js')}}"></script>
+
+
+</body>
+</html>
