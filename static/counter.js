@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>This is my profile</title>
-	<script type="text/javascript"}}>
-
-		function button_click() {
+	function button_click() {
 			document.querySelector('button').onclick = count;
 			document.querySelectorAll('.buttonColor').forEach(function(button) {
 				//arrow function
@@ -19,8 +13,6 @@
 		
 		document.addEventListener('DOMContentLoaded', button_click	
 		);
-
-		
 		
 
 		function hello() {
@@ -50,28 +42,3 @@
         document.querySelector('#tasks').append(li)
         return false
 	};
-	</script>
-</head>
-<body>
-<h1>Hey this is profile!!</h1>
-<p id='foo'>I am foo</p>
-<p id='cnt'>0</p>
-<button>Click me</button>
-<button class='buttonColor' data-color='red'>botton1</button>
-<button class='buttonColor' data-color='green'>bot ton2</button>
-<button class='buttonColor' data-color='blue'>botton3</button>
-
-<div id='task_list'>
-	<ul id='tasks'>
-	</ul>
-	<form id='new-task' onsubmit="add_task">Add task
-		<input id='task' placeholder="Enter your task">
-		<input type='submit'>
-	</form>
-</div>
-<select id='dropdown'>
-	<option value='yellow'>Yellow</option>
-	<option value='red'>Red</option>
-</select>
-</body>
-</html>
