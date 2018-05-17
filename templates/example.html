@@ -6,15 +6,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    #para1 {
+      color:red;
+  </style>
+  
 </head>
 <body>
 
 <div class="jumbotron text-center">
-    <h1>My Web App</h1>
+    <h1>{{headline2}}</h1>
+    <h2>{{intro}}</h2>
     <p>This example shows how to:</p>
-       <div class="container">
+       <div id='para1' class="container">
          <ul display="inline-block" text-align='left'>
             <li> Create a user form</li>
             <li> User input elements for different types (email, password, checkbox, submit button)</li>
@@ -36,9 +45,10 @@
         <p><input name='checkbox' type = 'checkbox'/> I agree</p>
         <p><input type='submit'  value = 'Register'/></p>
     </form>    
+
 </div>
 
-
+<!--table-->
 <div class="container">
     <h2>Table</h2>
     <table class="table table-striped">
@@ -69,13 +79,54 @@
     </table>
 </div>
 
+<!--insert img-->
 <div class="container">
   <h2>Holloween!</h2>            
   <img src="{{url_for('static',filename='IMG_3757.jpg')}}" class="img-rounded" alt="Holloween" width="304" height="236"> 
 </div>
 
-<script src="{{url_for('static',filename='js_example.js')}}"></script>
+<!--interact with form 
+Jinja2
+-->
+<div class="container"> 
+  <h4>My notes</h4>
+    <ul>
+      {% for note in notes %}
+      <li>
+        {{note}}
+      </li>
+      {% endfor %}
+    </ul>
 
+  <h3>Enter your note:</h3>
+    <form action="{{ url_for('example') }}" method="post">
+      <input type="text" name="note" placeholder="Enter your note">
+      <button>Add note</button>
+    </form>
 
+    {% if my_name == 'Hsin' %}
+      <h2>Welcome back Hsin!!<h2>
+    {% elif not my_name%} 
+       <h2></h2>   
+    {% else %}
+      <h2>I don't know you!<h2>
+    {% endif %}
+</div>
+
+<!--Route to another page-->
+<a href = "{{ url_for('index') }}">Back to Home</a>
+
+<script src="{{url_for('static',filename='js_example.js')}}">
+</script>
+<script type="text/javascript">
+ var showAlert = function(){
+  alert('hello')
+} 
+
+</script>
+
+<div class="container">
+  <button onclick="showAlert()">Magic Button</button>
+</div>
 </body>
 </html>

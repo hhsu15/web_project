@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}
+<script src="{{url_for('static',filename='ajax.js')}}"></script>
+<tittle>Ajax example</tittle>
+{% endblock %}
+
+{% block body %}
+	
+	<form id='form'>
+    	<input id='currency' autocomplete="off" autofocus placeholder="Currency">
+    	<input type='submit' value="Get exchange rate">
+	</form>	 	
+    <br>
+    <div id='result'></div>
+
+{% endblock %}
