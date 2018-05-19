@@ -1,7 +1,10 @@
 from flask import Flask, render_template, url_for,request, jsonify
+from flask_socketio import SocketIO, emit
 import requests
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret'
+socketio = SocketIO(app)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -63,7 +66,7 @@ def ajax():
 @app.route("/convert",methods=['GET','POST'])
 def convert():
 	
-    currency = request.form.get('currency')
+    currency = request.form.get('currency').upper()
     res = requests.get("http://api.fixer.io/latest",params={'base':'USD','symbols':currency}) 
     data = res.json()
 
@@ -83,7 +86,21 @@ def api():
 @app.route("/api/double/<int:num>",methods=['GET', 'POST'])
 def api_double(num):
 	data = {'data': num * 2}
-	return jsonify(data)	
+	return jsonify(data)
 
-if __name__  == '__main__':
-	app.run(debug=True)
+@app.route("/chatroom",methods=['GET', 'POST'])
+def chatroom():
+	return render_template("chatroom.html")
+
+@socketio.on("submit vote")
+def vote(data):
+	selection = data['selection']
+
+	emit("announce vote", {"selection":selection},broadcast=True)
+
+
+if __name__ == '__main__':
+    socketio.run(app)
+
+# if __name__  == '__main__':
+# 	app.run(debug=True)

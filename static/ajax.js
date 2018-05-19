@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	document.querySelector('#form').onsubmit = () => {
 		 //initialize new request
 		 const request = new XMLHttpRequest();
-		 const currency = document.querySelector('#currency').value;
+		 const currency = document.querySelector('#currency').value.toUpperCase();
 		 request.open('POST', '/convert');
         
 		 //Then the callback function when request compeltes

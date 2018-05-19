@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.slim.js"></script>>
+<script src="{{url_for('static',filename='socketio.js')}}"></script> 
+
+<tittle>socketio example</tittle>
+{% endblock %}
+
+{% block body %}
+	
+	<ul id="votes">
+	</ul>
+	<hr>
+
+	<button data-vote="yes">Yes</button>
+	<button data-vote="no">No</button>
+	<button data-vote="maybe">Maybe</button>
+
+
+{% endblock %}
