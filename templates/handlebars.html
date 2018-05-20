@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %}
+<<!-- script src="{{url_for('static',filename='handlebars-v4.0.11.js')}}"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+
+<script id='result' type='text/x-handlebars-template'>
+	{% raw -%}
+		<li>
+			You rolled: 
+			{{#each values}}
+				{{ this }}
+			{{/each}}
+			(Total: {{ total }})	
+		</li>
+	{%- endraw %}
+</script>
+
+<script>
+	const template = Handlebars.compile(document.querySelector('#result').innerHTML);
+	// const template = Handlebars.compile('<li>you rolled {{ val }} oh yes</li>');
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+    	document.querySelector('#roll').onclick = () => {
+            
+            //Get number of rolls from input and create loops
+            const counter = parseInt(document.querySelector('#counter').value);
+            const rolls = [];
+            let total = 0
+            for (let i=0; i<counter; i++) {
+            	const val = Math.floor((Math.random()*6)+ 1);
+            	rolls.push(val);
+            	total += val
+
+            };
+    		//create a random roll
+    		// const roll = Math.floor((Math.random()*6)+ 1);
+    		//alert(roll)
+
+    		//add roll result to DOM
+    		var content = template({'values':rolls, 'total':total});
+
+    		document.querySelector('#rolls').innerHTML += content;
+    	};
+
+    })
+
+</script>
+<tittle>handlebars example</tittle>
+{% endblock %}
+
+{% block body %}
+    <input id='counter' type='number' placeholder="number of rolls" min="1" value='6'>
+	<button id='roll'>Roll</button>
+	<ul id='rolls'>
+	</ul>
+
+{% endblock %}

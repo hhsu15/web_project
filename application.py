@@ -98,6 +98,9 @@ def vote(data):
 
 	emit("announce vote", {"selection":selection},broadcast=True)
 
+@app.route("/handlebars")
+def handlebars():
+	return render_template("handlebars.html")
 
 if __name__ == '__main__':
     socketio.run(app)
